@@ -305,3 +305,96 @@ h2 {
     padding: 24px;
   }
 }
+
+/* ========================
+   Modal & Backdrop Styles
+   ======================== */
+
+/* The backdrop dims the rest of the page to focus on the modal */
+.backdrop {
+  display: none; /* Controlled by JavaScript */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  z-index: 999; /* Ensures it sits above the sidebar and header */
+}
+
+/* The centered modal window */
+.modal-window {
+  display: none; /* Controlled by JavaScript */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Perfectly centers the modal */
+  background-color: var(--primary-color);
+  width: 90%;
+  max-width: 480px; /* Standard Figma desktop width */
+  padding: 32px;
+  border-radius: 8px;
+  z-index: 1000;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.modal-title {
+  font-size: 1.125rem;
+  margin-bottom: 24px;
+  color: var(--primary-font-color);
+}
+
+/* Label and Input Styling */
+.label-text {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: var(--secondary-font-color);
+  margin-bottom: 8px;
+}
+
+.modal-input {
+  width: 100%;
+  padding: 8px 16px;
+  margin-bottom: 24px;
+  border: 1px solid rgba(130, 143, 163, 0.25);
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 0.8125rem;
+  color: var(--primary-font-color);
+  background-color: var(--primary-color);
+}
+
+.modal-input:focus {
+  outline: none;
+  border-color: #635fc7; /* Highlights purple on focus */
+}
+
+/* Modal Actions */
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-close {
+  background-color: #635fc7;
+  color: #ffffff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 0.8125rem;
+}
+
+.btn-close:hover {
+  background-color: #a8a4ff; /* Lighter purple hover state */
+}
+
+/* Responsive Modal Adjustments */
+@media screen and (max-width: 576px) {
+  .modal-window {
+    width: 95%;
+    padding: 24px;
+  }
+}

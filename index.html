@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -14,12 +15,12 @@
       sizes="32x32"
       href="./assets/favicon.svg"
     />
+    <script defer src="./initialData.js"></script>
     <script defer src="./scripts.js"></script>
     <title>Kanban Task Management</title>
   </head>
 
   <body>
-    <!-- Navigation Sidebar: Contains the logo, navigation links for boards, and theme toggle. -->
     <nav class="side-bar" id="side-bar-div">
       <div id="side-logo-div">
         <img id="logo" src="./assets/logo-light.svg" alt="logo-light" />
@@ -31,7 +32,6 @@
       </div>
     </nav>
 
-    <!-- Main Layout: Header with board title, add task button, and main content area for task columns. -->
     <div id="layout">
       <header id="header" class="sticky-header">
         <div class="header-name-div">
@@ -48,46 +48,57 @@
 
       <div class="container">
         <main class="card-column-main">
-          <!-- Task Columns: Display tasks grouped by status (TODO, DOING, DONE). -->
           <div class="column-div" data-status="todo">
             <div id="todo-head-div" class="column-head-div">
               <span class="dot" id="todo-dot"></span>
-              <h4 id="toDoText" class="columnHeader">TODO (4)</h4>
+              <h4 id="toDoText" class="columnHeader">TODO (0)</h4>
             </div>
-            <!-- Tasks container for TODO -->
-            <div class="tasks-container">
-              <div class="task-div">Launch Epic Career 🚀</div>
-              <div class="task-div">Conquer React⚛️</div>
-              <div class="task-div">Understand Databases⚙️</div>
-              <div class="task-div">Crush Frameworks🖼️</div>
-            </div>
+            <div class="tasks-container" id="todo-tasks-container"></div>
           </div>
-          <!-- DOING Column -->
+
           <div class="column-div" data-status="doing">
             <div id="doing-head-div" class="column-head-div">
               <span class="dot" id="doing-dot"></span>
-              <h4 id="doingText" class="columnHeader">DOING (2)</h4>
+              <h4 id="doingText" class="columnHeader">DOING (0)</h4>
             </div>
-            <!-- Tasks container for DOING -->
-            <div class="tasks-container">
-              <div class="task-div">Master JavaScript 💛</div>
-              <div class="task-div">Never Give Up 🏆</div>
-            </div>
+            <div class="tasks-container" id="doing-tasks-container"></div>
           </div>
-          <!-- DONE Column -->
+
           <div class="column-div" data-status="done">
             <div id="done-head-div" class="column-head-div">
               <span class="dot" id="done-dot"></span>
-              <h4 id="doneText" class="columnHeader">DONE (2)</h4>
+              <h4 id="doneText" class="columnHeader">DONE (0)</h4>
             </div>
-            <!-- Tasks container for DONE -->
-            <div class="tasks-container">
-              <div class="task-div">Explore ES6 Features 🚀</div>
-              <div class="task-div">Have fun 🥳</div>
-            </div>
+            <div class="tasks-container" id="done-tasks-container"></div>
           </div>
         </main>
       </div>
     </div>
+
+    <div class="backdrop" id="modal-backdrop" style="display: none;"></div>
+
+    <div class="modal-window" id="task-modal" style="display: none;">
+      <form id="edit-task-form">
+        <h3 class="modal-title">Edit Task</h3>
+        
+        <label for="edit-task-title" class="label-text">Title</label>
+        <input type="text" id="edit-task-title" class="modal-input" placeholder="Task Title" />
+
+        <label for="edit-task-desc" class="label-text">Description</label>
+        <textarea id="edit-task-desc" class="modal-input" placeholder="Task Description" rows="4"></textarea>
+
+        <label for="edit-task-status" class="label-text">Status</label>
+        <select id="edit-task-status" class="modal-input">
+          <option value="todo">todo</option>
+          <option value="doing">doing</option>
+          <option value="done">done</option>
+        </select>
+
+        <div class="modal-actions">
+          <button type="button" id="close-modal-btn" class="btn-close">Close</button>
+        </div>
+      </form>
+    </div>
+
   </body>
 </html>
